@@ -19,4 +19,9 @@ export class TaskService {
   getAll() {
     return this.tasks
   }
+
+  getById(id: number) {
+    const task = this.tasks.find((value) => value.id == id)
+    return task
+  }
 }
