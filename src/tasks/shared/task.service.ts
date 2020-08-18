@@ -24,4 +24,17 @@ export class TaskService {
     const task = this.tasks.find((value) => value.id == id)
     return task
   }
+
+  create(task: Task) {
+    let lastId = 0
+    if (this.tasks.length > 0) {
+      lastId = this.tasks[this.tasks.length - 1].id
+    }
+
+    task.id = lastId + 1
+    this.tasks.push(task)
+
+    return task
+  }
+
 }
