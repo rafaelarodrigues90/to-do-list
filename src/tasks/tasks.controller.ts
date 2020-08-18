@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Body, Post } from '@nestjs/common';
+import { Controller, Get, Param, Body, Post, Put, Delete } from '@nestjs/common';
 import { TaskService } from './shared/task.service';
 import { Task } from './shared/task';
 
@@ -21,5 +21,11 @@ export class TasksController {
   @Post()
   async create(@Body() task: Task) : Promise<Task> {
     return this.taskService.create(task)
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: number, @Body() task: Task) : Promise<Task> {
+    task.id = id
+    return this.taskService.update(task)
   }
 }

@@ -37,4 +37,12 @@ export class TaskService {
     return task
   }
 
+  update(task: Task) {
+    const taskArray = this.getById(task.id)
+    if (taskArray) {
+      taskArray.description = task.description
+      taskArray.completed = task.completed
+    }
+    return taskArray
+  }
 }
